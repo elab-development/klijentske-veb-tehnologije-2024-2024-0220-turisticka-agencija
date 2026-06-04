@@ -1,0 +1,73 @@
+/* Inter font  */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import "tailwindcss";
+
+/* @custom-variant dark (&:where(.dark, .dark *)); */ 
+
+/* Colors */
+
+:root {
+  --white: #ffffff;
+  --bg: #f1f1f1;
+  --bg-login: #e6edff;
+  --text-light: #d2d2d2;
+  --text-normal: #bfbfbf;
+  --heading: #303030;
+  --black: #000000;
+
+  --shadow: #dedede;
+
+  --color-discount: #ef4444;
+  --color-last-minute: #f97316;
+  --color-success: #10b981;
+
+  --indigo: #4f46e5;
+  --hover: #4338ca;
+  --purple: #9d47f2;
+}
+
+* {
+  font-family: "Inter";
+  box-sizing: border-box;
+}
+
+@theme {
+  --shadow-card: 0px 0px 5px 2px var(--shadow);
+  --shadow-card-hover: 0px 0px 14px 2px var(--shadow);
+}
+
+/* Font sizes */
+
+
+  /* --main-heading-size: 28px;
+  --logo-size: 24px;
+  --profile-subheading-size: 24px;
+  --wishlist-subheading-size: 24px;
+  --details-subheading-size: 24px;
+  --offers-item-heading-size: 20px;
+  --home-subheading-size: 18px;
+  --login-medium-size: 16px;
+  --login-semibold-size: 16px;
+  --username-size: 16px;
+  --amenities-heading-size: 16px;
+  --link-size: 16px;
+  --card-heading-size: 16px;
+  --card-location-size: 16px;
+  --new-price-size: 16px;
+  --footer-size: 16px;
+  --filter-heading-size: 16px;
+  --filter-item-size: 13px;
+  --last-minute-size: 12px;
+  --discount-size: 12px;
+  --old-price-size: 11px;
+  --discount-price-size: 11px;
+  --email-size: 11px;
+  --card-offer-type-size: 10px; */
+
+/* p-4 = 16px */
+/* 1 = 4px */
+/* border text bg shadow -(--ime-boje) */
+
+/* Imacemo samo jedan css fajl, jer koristimo tailwindcss */
