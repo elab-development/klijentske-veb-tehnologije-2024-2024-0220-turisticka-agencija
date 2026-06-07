@@ -21,7 +21,23 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
 
   const [reservations, setReservations] = useState<number[]>([]);
 
-  const [wishlist, setWishlist] = useState<number[]>([]);
+  const [wishlist, setWishlist] = useState<number[]>([1, 3, 5]);
+  
+  const toggleWishlist = (id: number) => {
+    setWishlist((prevWishlist) =>
+      prevWishlist.includes(id)
+        ? prevWishlist.filter((wishlistId) => wishlistId !== id)
+        : [...prevWishlist, id]
+    );
+  };
+
+  const addReservation = (id: number) => {
+    setReservations((prevReservations) =>
+      prevReservations.includes(id)
+        ? prevReservations
+        : [...prevReservations, id]
+    );
+  };
 
   const value = {
     user,
@@ -32,6 +48,8 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
     setReservations,
     wishlist,
     setWishlist,
+    toggleWishlist,
+    addReservation,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

@@ -14,4 +14,7 @@ export interface AppContextType {
 
   wishlist: number[];
   setWishlist: Dispatch<SetStateAction<number[]>>;
+
+  toggleWishlist: (id: number) => void;
+  addReservation: (id: number) => void;
 }
