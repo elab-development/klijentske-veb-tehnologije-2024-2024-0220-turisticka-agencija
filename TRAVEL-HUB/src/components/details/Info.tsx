@@ -142,7 +142,11 @@ const Info: React.FC<DetailsProps> = ({ arrangement }) => {
                   <p className="text-sm text-gray-600">$150 round trip</p>
                 </div>
                 <label className="relative inline-flex items-center cursor-pointer">
-                  <input onChange={() => setAirportTransfer((prev) => !prev)} type="checkbox" className="sr-only peer" />
+                  <input
+                    onChange={() => setAirportTransfer((prev) => !prev)}
+                    type="checkbox"
+                    className="sr-only peer"
+                  />
                   <div className="w-10.5 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full  after:absolute after:top-0.75 after:left-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4.5 after:w-4.5 after:transition-all peer-checked:bg-indigo-600"></div>
                 </label>
               </div>
@@ -217,7 +221,8 @@ const Info: React.FC<DetailsProps> = ({ arrangement }) => {
                       {arrangement!.price -
                         discount +
                         additionalDays * additionalDaysPrice +
-                        excursion * excursionPrice}
+                        excursion * excursionPrice +
+                        (airportTransfer ? airportTransferPrice : 0)}
                     </span>
                   </div>
                 </div>

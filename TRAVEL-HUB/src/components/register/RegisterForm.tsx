@@ -16,23 +16,23 @@ const RegisterForm = () => {
 
       <div className="w-full flex flex-col items-start gap-2">
         <p className="text-md font-semibold">Name</p>
-        <input type="text" className="w-full border border-(--heading) px-3 py-1.5 rounded-lg" placeholder="Enter your name" />
+        <input type="text" className="w-full border border-(--text-normal) px-4 py-2 focus:outline-(--indigo) rounded-lg" placeholder="Enter your name" />
       </div>
       <div className="w-full flex flex-col items-start gap-2">
         <p className="text-md font-semibold">Surname</p>
-        <input type="text" className="w-full border border-(--heading) px-3 py-1.5 rounded-lg" placeholder="Enter your surname" />
+        <input type="text" className="w-full border border-(--text-normal) px-4 py-2 focus:outline-(--indigo) rounded-lg" placeholder="Enter your surname" />
       </div>
       <div className="w-full flex flex-col items-start gap-2">
         <p className="text-md font-semibold">Email</p>
-        <input type="email" className="w-full border border-(--heading) px-3 py-1.5 rounded-lg" placeholder="Enter your email" />
+        <input type="email" className="w-full border border-(--text-normal) px-4 py-2 focus:outline-(--indigo) rounded-lg" placeholder="Enter your email" />
       </div>
       <div className="w-full flex flex-col items-start gap-2">
         <p className="text-md font-semibold">Password</p>
-        <input type="password" className="w-full border border-(--heading) px-3 py-1.5 rounded-lg" placeholder="Enter your password" />
+        <input type="password" className="w-full border border-(--text-normal) px-4 py-2 focus:outline-(--indigo) rounded-lg" placeholder="Enter your password" />
       </div>
       <div className="w-full flex flex-col items-start gap-2">
         <p className="text-md font-semibold">Confirm Password</p>
-        <input type="password" className="w-full border border-(--heading) px-3 py-1.5 rounded-lg" placeholder="Confirm your password" />
+        <input type="password" className="w-full border border-(--text-normal) px-4 py-2 focus:outline-(--indigo) rounded-lg" placeholder="Confirm your password" />
       </div>
 
       <button className="w-full text-(--white) text-[16px] font-semibold bg-(--indigo) rounded-lg cursor-pointer py-2">

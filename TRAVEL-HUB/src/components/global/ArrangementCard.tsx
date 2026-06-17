@@ -13,7 +13,7 @@ const ArrangementCard: React.FC<ProductCardProps> = ({ arrangement }) => {
   const inWishlist = wishlist.includes(arrangement!.id);
 
   return (
-    <div className="w-full max-w-65 flex flex-col items-center rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover cursor-pointer transition-all duration-100">
+    <div className="w-full max-w-65 flex flex-col items-center rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover hover:scale-103  cursor-pointer transition-all duration-300">
       <div className="relative w-full h-45 overflow-hidden flex items-center justify-center">
         <img
           src={arrangement.image}
