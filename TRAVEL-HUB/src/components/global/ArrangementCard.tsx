@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom";
 import type { Arrangement } from "../../models/Arrangement";
-import { FaRegHeart } from "react-icons/fa6";
+import { FaHeart, FaRegHeart } from "react-icons/fa6";
 import { GoFlame } from "react-icons/go";
+import { useAppContext } from "../../hooks/useAppContext";
 
 interface ProductCardProps {
   arrangement: Arrangement;
 }
 
 const ArrangementCard: React.FC<ProductCardProps> = ({ arrangement }) => {
+  const { toggleWishlist, wishlist } = useAppContext();
+  const inWishlist = wishlist.includes(arrangement!.id);
+
   return (
     <div className="w-full max-w-65 flex flex-col items-center rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover cursor-pointer transition-all duration-100">
       <div className="relative w-full h-45 overflow-hidden flex items-center justify-center">
@@ -16,16 +20,25 @@ const ArrangementCard: React.FC<ProductCardProps> = ({ arrangement }) => {
           alt="arrangement-image"
           className="w-full h-45 object-cover"
         />
-        <div className="absolute bottom-2 right-2 p-2 rounded-full bg-(--bg) text-xl text-(--heading)">
-          <FaRegHeart />
+        <div
+          onClick={() => toggleWishlist(arrangement!.id)}
+          className="absolute bottom-2 right-2 p-2 rounded-full bg-(--bg) text-xl text-(--heading)"
+        >
+          {inWishlist ? (
+            <FaHeart className="text-(--color-discount)" />
+          ) : (
+            <FaRegHeart className="text-(--heading)" />
+          )}
         </div>
         <p className="absolute top-2 right-2 px-2 py-1 bg-(--color-discount) text-(--white) text-sm rounded-full">
           -{arrangement.discount}%
         </p>
-        {arrangement.isLastMinute && <p className="absolute top-2 left-2 px-2 py-1 bg-(--color-last-minute) text-(--white) text-sm rounded-full flex items-center gap-1">
-          <GoFlame className="text-lg" />
-          Last minute
-        </p>}
+        {arrangement.isLastMinute && (
+          <p className="absolute top-2 left-2 px-2 py-1 bg-(--color-last-minute) text-(--white) text-sm rounded-full flex items-center gap-1">
+            <GoFlame className="text-lg" />
+            Last minute
+          </p>
+        )}
       </div>
       <div className="w-full flex flex-col items-start p-4 gap-2">
         <h3 className="text-[18px] font-semibold text-(--black)">
