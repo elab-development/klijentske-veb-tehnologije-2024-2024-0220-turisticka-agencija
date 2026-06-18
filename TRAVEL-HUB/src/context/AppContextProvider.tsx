@@ -21,7 +21,7 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
 
   const [reservations, setReservations] = useState<number[]>([]);
 
-  const [wishlist, setWishlist] = useState<number[]>([1, 3, 5]);
+  const [wishlist, setWishlist] = useState<number[]>([]);
   
   const toggleWishlist = (id: number) => {
     setWishlist((prevWishlist) =>
