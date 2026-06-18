@@ -12,8 +12,8 @@ export default function WeatherCard({
   error,
 }: WeatherCardProps) {
   return (
-    <section className="mt-8 w-full max-w-5xl rounded-2xl bg-white p-6 shadow-lg">
-      <h2 className="mb-5 text-xl font-bold text-gray-900 sm:text-2xl">
+    <aside className="w-full rounded-2xl bg-white p-5 shadow-lg">
+      <h2 className="mb-5 text-xl font-bold text-gray-900">
         Current Weather
       </h2>
 
@@ -24,7 +24,7 @@ export default function WeatherCard({
       {error && <p className="text-sm text-red-500">{error}</p>}
 
       {weather && !loading && !error && (
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-5">
           <div className="flex items-center gap-4">
             <img
               src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
@@ -43,29 +43,29 @@ export default function WeatherCard({
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-5 text-sm sm:grid-cols-4">
-            <div>
+          <div className="grid grid-cols-2 gap-4 text-sm">
+            <div className="rounded-xl bg-gray-50 p-3">
               <p className="text-gray-500">Temp</p>
               <p className="font-semibold text-indigo-600">
                 {weather.temperature}°C
               </p>
             </div>
 
-            <div>
+            <div className="rounded-xl bg-gray-50 p-3">
               <p className="text-gray-500">Feels like</p>
               <p className="font-semibold text-gray-900">
                 {weather.feelsLike}°C
               </p>
             </div>
 
-            <div>
+            <div className="rounded-xl bg-gray-50 p-3">
               <p className="text-gray-500">Humidity</p>
               <p className="font-semibold text-gray-900">
                 {weather.humidity}%
               </p>
             </div>
 
-            <div>
+            <div className="rounded-xl bg-gray-50 p-3">
               <p className="text-gray-500">Wind</p>
               <p className="font-semibold text-gray-900">
                 {weather.windSpeed} m/s
@@ -74,6 +74,6 @@ export default function WeatherCard({
           </div>
         </div>
       )}
-    </section>
+    </aside>
   );
 }

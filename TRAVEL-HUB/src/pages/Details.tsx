@@ -86,13 +86,19 @@ const Details = () => {
     <section className="flex w-full flex-col items-center pt-17">
       <Header />
 
-      <Info key={targetArrangement.id} arrangement={targetArrangement} />
+      <div className="flex w-full max-w-7xl flex-col items-start gap-6 px-4 pt-8 lg:flex-row lg:px-8">
+        <div className="w-full lg:w-80 lg:shrink-0">
+          <WeatherCard
+            weather={weather}
+            loading={weatherLoading}
+            error={weatherError}
+          />
+        </div>
 
-      <WeatherCard
-        weather={weather}
-        loading={weatherLoading}
-        error={weatherError}
-      />
+        <div className="w-full flex-1">
+          <Info key={targetArrangement.id} arrangement={targetArrangement} />
+        </div>
+      </div>
 
       <Footer />
     </section>
