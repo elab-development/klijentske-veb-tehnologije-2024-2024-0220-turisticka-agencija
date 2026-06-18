@@ -22,12 +22,12 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
   const [reservations, setReservations] = useState<number[]>([]);
 
   const [wishlist, setWishlist] = useState<number[]>([]);
-  
+
   const toggleWishlist = (id: number) => {
     setWishlist((prevWishlist) =>
       prevWishlist.includes(id)
         ? prevWishlist.filter((wishlistId) => wishlistId !== id)
-        : [...prevWishlist, id]
+        : [...prevWishlist, id],
     );
   };
 
@@ -35,7 +35,7 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
     setReservations((prevReservations) =>
       prevReservations.includes(id)
         ? prevReservations
-        : [...prevReservations, id]
+        : [...prevReservations, id],
     );
   };
 

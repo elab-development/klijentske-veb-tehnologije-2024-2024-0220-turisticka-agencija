@@ -30,12 +30,12 @@ export class WeatherService {
   async getWeatherByCoordinates(
     latitude: number,
     longitude: number,
-    displayName: string
+    displayName: string,
   ): Promise<WeatherData> {
     this.validateApiKey();
 
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${this.apiKey}&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${this.apiKey}&units=metric`,
     );
 
     const data = await response.json();

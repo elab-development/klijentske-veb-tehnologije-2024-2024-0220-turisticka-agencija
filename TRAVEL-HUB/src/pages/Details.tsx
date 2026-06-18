@@ -20,53 +20,78 @@ const Details = () => {
   const [weatherError, setWeatherError] = useState("");
 
   const targetArrangement = arrangements.find(
-    (arrangement) => arrangement.id === Number(id)
+    (arrangement) => arrangement.id === Number(id),
   );
 
   useEffect(() => {
-  if (!targetArrangement?.destination) return;
+    if (!targetArrangement?.destination) return;
 
-  const fetchWeather = async () => {
-    try {
-      setWeatherLoading(true);
-      setWeatherError("");
+    const fetchWeather = async () => {
+      try {
+        setWeatherLoading(true);
+        setWeatherError("");
 
-      const destinationCoordinates: Record<string, Coordinates> = {
-        Bali: { latitude: -8.4095, longitude: 115.1889, displayName: "Bali" },
-        Chamonix: { latitude: 45.9237, longitude: 6.8694, displayName: "Chamonix" },
-        Santorini: { latitude: 36.3932, longitude: 25.4615, displayName: "Santorini" },
-        Dubai: { latitude: 25.2048, longitude: 55.2708, displayName: "Dubai" },
-        Cancun: { latitude: 21.1619, longitude: -86.8515, displayName: "Cancun" },
-        Rome: { latitude: 41.9028, longitude: 12.4964, displayName: "Rome" },
-        Serengeti: { latitude: -2.3333, longitude: 34.8333, displayName: "Serengeti" },
-        Tokyo: { latitude: 35.6762, longitude: 139.6503, displayName: "Tokyo" },
-      };
+        const destinationCoordinates: Record<string, Coordinates> = {
+          Bali: { latitude: -8.4095, longitude: 115.1889, displayName: "Bali" },
+          Chamonix: {
+            latitude: 45.9237,
+            longitude: 6.8694,
+            displayName: "Chamonix",
+          },
+          Santorini: {
+            latitude: 36.3932,
+            longitude: 25.4615,
+            displayName: "Santorini",
+          },
+          Dubai: {
+            latitude: 25.2048,
+            longitude: 55.2708,
+            displayName: "Dubai",
+          },
+          Cancun: {
+            latitude: 21.1619,
+            longitude: -86.8515,
+            displayName: "Cancun",
+          },
+          Rome: { latitude: 41.9028, longitude: 12.4964, displayName: "Rome" },
+          Serengeti: {
+            latitude: -2.3333,
+            longitude: 34.8333,
+            displayName: "Serengeti",
+          },
+          Tokyo: {
+            latitude: 35.6762,
+            longitude: 139.6503,
+            displayName: "Tokyo",
+          },
+        };
 
-      const coordinates = destinationCoordinates[targetArrangement.destination];
+        const coordinates =
+          destinationCoordinates[targetArrangement.destination];
 
-      if (!coordinates) {
-        throw new Error("Coordinates for destination are missing.");
+        if (!coordinates) {
+          throw new Error("Coordinates for destination are missing.");
+        }
+
+        const weatherService = new WeatherService();
+
+        const data = await weatherService.getWeatherByCoordinates(
+          coordinates.latitude,
+          coordinates.longitude,
+          coordinates.displayName,
+        );
+
+        setWeather(data);
+      } catch (error) {
+        console.log("Weather fetch error:", error);
+        setWeatherError("Weather information is currently unavailable.");
+      } finally {
+        setWeatherLoading(false);
       }
+    };
 
-      const weatherService = new WeatherService();
-
-      const data = await weatherService.getWeatherByCoordinates(
-        coordinates.latitude,
-        coordinates.longitude,
-        coordinates.displayName
-      );
-
-      setWeather(data);
-    } catch (error) {
-      console.log("Weather fetch error:", error);
-      setWeatherError("Weather information is currently unavailable.");
-    } finally {
-      setWeatherLoading(false);
-    }
-  };
-
-  fetchWeather();
-}, [targetArrangement?.destination]);
+    fetchWeather();
+  }, [targetArrangement?.destination]);
 
   if (!targetArrangement) {
     return (

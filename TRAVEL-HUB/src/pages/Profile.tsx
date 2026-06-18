@@ -55,23 +55,23 @@ export default function Profile() {
   }
 
   const reservedArrangements = arrangements.filter((arrangement) =>
-    reservations.includes(arrangement.id)
+    reservations.includes(arrangement.id),
   );
 
   const wishlistArrangements = arrangements.filter((arrangement) =>
-    wishlist.includes(arrangement.id)
+    wishlist.includes(arrangement.id),
   );
 
   const handleSave = () => {
-  setUser({
-    ...user,
-    name: formData.name,
-    surname: formData.surname,
-    email: formData.email,
-  });
+    setUser({
+      ...user,
+      name: formData.name,
+      surname: formData.surname,
+      email: formData.email,
+    });
 
-  setIsEditing(false);
-};
+    setIsEditing(false);
+  };
 
   const handleLogout = () => {
     setUser(null);

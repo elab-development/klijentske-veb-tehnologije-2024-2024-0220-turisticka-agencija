@@ -13,9 +13,7 @@ export default function WeatherCard({
 }: WeatherCardProps) {
   return (
     <aside className="w-full rounded-2xl bg-white p-5 shadow-lg">
-      <h2 className="mb-5 text-xl font-bold text-gray-900">
-        Current Weather
-      </h2>
+      <h2 className="mb-5 text-xl font-bold text-gray-900">Current Weather</h2>
 
       {loading && (
         <p className="text-sm text-gray-500">Loading weather data...</p>
@@ -60,9 +58,7 @@ export default function WeatherCard({
 
             <div className="rounded-xl bg-gray-50 p-3">
               <p className="text-gray-500">Humidity</p>
-              <p className="font-semibold text-gray-900">
-                {weather.humidity}%
-              </p>
+              <p className="font-semibold text-gray-900">{weather.humidity}%</p>
             </div>
 
             <div className="rounded-xl bg-gray-50 p-3">
