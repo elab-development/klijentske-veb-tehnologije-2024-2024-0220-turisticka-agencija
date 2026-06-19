@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useState, useEffect, type ReactNode } from "react"; // Dodat useEffect
 import { AppContext } from "./AppContext";
 import type { User } from "../models/User";
 import type { Arrangement } from "../models/Arrangement";
@@ -9,10 +9,31 @@ interface AppContextProviderProps {
 }
 
 const AppContextProvider = ({ children }: AppContextProviderProps) => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>(() => {
+    const savedUser = localStorage.getItem("loggedInUser");
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
 
-  const [arrangements, setArrangements] =
-    useState<Arrangement[]>(arrangementsData);
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem("loggedInUser", JSON.stringify(user));
+
+      const allUsers = JSON.parse(localStorage.getItem("users") || "[]");
+      
+      const updatedUsers = allUsers.map((u: any) => {
+        if (u.password === user.password) {
+          return user; 
+        }
+        return u;
+      });
+
+      localStorage.setItem("users", JSON.stringify(updatedUsers));
+    } else {
+      localStorage.removeItem("loggedInUser");
+    }
+  }, [user]);
+
+  const [arrangements, setArrangements] = useState<Arrangement[]>(arrangementsData);
 
   const [reservations, setReservations] = useState<number[]>([]);
 

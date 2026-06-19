@@ -1,13 +1,33 @@
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { SlPlane } from "react-icons/sl";
-import { Link } from "react-router-dom";
+import { useAppContext } from "../../hooks/useAppContext";
 
 const LoginForm = () => {
   const navigate = useNavigate();
+  const { setUser } = useAppContext();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate("/Home");
+    
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    
+    const cleanEmail = email.trim().toLowerCase();
+
+    const validUser = users.find(
+      (u: any) => u.email === cleanEmail && u.password === password
+    );
+
+    if (validUser) {
+      setUser(validUser);
+      
+      navigate("/home");
+    } else {
+      alert("Pogrešan email ili lozinka!");
+    }
   };
 
   return (
@@ -26,12 +46,26 @@ const LoginForm = () => {
 
       <div className="w-full flex flex-col items-start gap-2">
         <p className="text-sm font-semibold text-(--heading)">Email Address</p>
-        <input type="email" required className="w-full border border-gray-300 px-3 py-2 rounded-lg" placeholder="Enter your email" />
+        <input 
+          type="email" 
+          required 
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full border border-gray-300 px-3 py-2 rounded-lg" 
+          placeholder="Enter your email" 
+        />
       </div>
 
       <div className="w-full flex flex-col items-start gap-2">
         <p className="text-sm font-semibold text-(--heading)">Password</p>
-        <input type="password" required className="w-full border border-gray-300 px-3 py-2 rounded-lg" placeholder="Enter your password" />
+        <input 
+          type="password" 
+          required 
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full border border-gray-300 px-3 py-2 rounded-lg" 
+          placeholder="Enter your password" 
+        />
       </div>
 
       <div className="w-full flex items-center justify-between text-sm">
@@ -39,7 +73,7 @@ const LoginForm = () => {
           <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-(--indigo)" />
           Remember me
         </label>
-        <Link className="text-(--indigo) font-medium hover:underline" to="/Verify">
+        <Link className="text-(--indigo) font-medium hover:underline" to="/verify">
           Forgot Password?
         </Link>
       </div>
