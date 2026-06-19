@@ -14,15 +14,11 @@ import type { Arrangement } from "../models/Arrangement";
 export default function WishList() {
   const navigate = useNavigate();
 
-  const {
-    arrangements,
-    wishlist,
-    toggleWishlist,
-    addReservation,
-  } = useAppContext();
+  const { arrangements, wishlist, toggleWishlist, addReservation } =
+    useAppContext();
 
   const wishlistArrangements = arrangements.filter((arrangement) =>
-    wishlist.includes(arrangement.id)
+    wishlist.includes(arrangement.id),
   );
 
   const handleBook = (id: number) => {
@@ -203,7 +199,7 @@ export default function WishList() {
                             sum +
                             arrangement.price *
                               (1 - arrangement.discount / 100),
-                          0
+                          0,
                         )
                         .toFixed(0)}
                     </p>
