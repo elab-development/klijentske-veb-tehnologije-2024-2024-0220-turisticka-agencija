@@ -9,12 +9,7 @@ interface AppContextProviderProps {
 }
 
 const AppContextProvider = ({ children }: AppContextProviderProps) => {
-  const [user, setUser] = useState<User | null>({
-    name: "Petar",
-    surname: "Petrovic",
-    email: "petar@gmail.com",
-    password: "123456",
-  });
+  const [user, setUser] = useState<User | null>(null);
 
   const [arrangements, setArrangements] =
     useState<Arrangement[]>(arrangementsData);

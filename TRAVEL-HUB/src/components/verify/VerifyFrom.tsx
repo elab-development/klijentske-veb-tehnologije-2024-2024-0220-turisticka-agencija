@@ -7,7 +7,7 @@ const VerifyForm = () => {
 
   const handleVerify = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate("/Home");
+    navigate("/reset");
   };
     return(
         <form onSubmit={handleVerify} className="w-full max-w-120 bg-(--white) rounded-3xl shadow py-5 px-10 flex flex-col items-center gap-5 pt-10">

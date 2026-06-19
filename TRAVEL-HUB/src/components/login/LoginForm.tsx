@@ -7,7 +7,7 @@ const LoginForm = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate("/Verify");
+    navigate("/Home");
   };
 
   return (
@@ -39,7 +39,7 @@ const LoginForm = () => {
           <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-(--indigo)" />
           Remember me
         </label>
-        <Link className="text-(--indigo) font-medium hover:underline" to="/forgot-password">
+        <Link className="text-(--indigo) font-medium hover:underline" to="/Verify">
           Forgot Password?
         </Link>
       </div>
