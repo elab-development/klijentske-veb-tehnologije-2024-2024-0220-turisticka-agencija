@@ -16,7 +16,6 @@ const Filter = ({
       <h3 className="text-lg font-semibold text-(--heading)">Filters</h3>
       
       <div className="flex flex-col gap-4">
-        {/* Only Discounted Filter */}
         <div className="flex flex-col gap-1">
           <label className="text-xs text-gray-500 font-medium">Only Discounted</label>
           <div className="flex items-center mt-1">
@@ -30,7 +29,6 @@ const Filter = ({
           </div>
         </div>
 
-        {/* Last Minute Only Filter */}
         <div className="flex flex-col gap-1">
           <label className="text-xs text-gray-500 font-medium">Last Minute Only</label>
           <div className="flex items-center mt-1">
