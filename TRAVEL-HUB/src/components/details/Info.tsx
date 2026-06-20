@@ -4,13 +4,15 @@ import type { Arrangement } from "../../models/Arrangement";
 import { BiMinus, BiPlus } from "react-icons/bi";
 import { useState } from "react";
 import { useAppContext } from "../../hooks/useAppContext";
+import { useNavigate } from "react-router-dom";
 
 interface DetailsProps {
   arrangement: Arrangement | undefined;
 }
 
 const Info: React.FC<DetailsProps> = ({ arrangement }) => {
-  const { toggleWishlist, wishlist } = useAppContext();
+  const { toggleWishlist, wishlist, addReservation } = useAppContext();
+  const navigate = useNavigate();
 
   const inWishlist = wishlist.includes(arrangement!.id);
 
@@ -52,6 +54,13 @@ const Info: React.FC<DetailsProps> = ({ arrangement }) => {
         return;
       }
       setExcursion(excursion - 1);
+    }
+  };
+
+  const handleBooking = () => {
+    if (arrangement) {
+      addReservation(arrangement.id);
+      navigate("/profile");
     }
   };
 
@@ -228,7 +237,10 @@ const Info: React.FC<DetailsProps> = ({ arrangement }) => {
                 </div>
               </div>
 
-              <button className="w-full mt-6 bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition-colors text-lg cursor-pointer">
+              <button 
+                onClick={handleBooking} 
+                className="w-full mt-6 bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition-colors text-lg cursor-pointer"
+              >
                 Book Now
               </button>
             </div>
